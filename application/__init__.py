@@ -8,6 +8,8 @@ from flask_pymongo import PyMongo
 
 from application.utils.config import Config
 from application.utils.logger import Logger
+from application.utils.commands import Command
+from application.utils.blueprint import AutoBluePrint, path
 
 """加载组件[单例模式]"""
 # 实例化配置加载类
@@ -22,6 +24,11 @@ redis_check: FlaskRedis = FlaskRedis(config_prefix="CHECK")
 mongo: PyMongo = PyMongo()
 # 实例化日志配置类
 logger: Logger = Logger()
+
+# 终端命令管理类实例化
+command: Command = Command()
+# 实例化自动化蓝图类
+blueprint: AutoBluePrint = AutoBluePrint()
 
 
 def init_app(config_path: str) -> Flask:
@@ -46,5 +53,11 @@ def init_app(config_path: str) -> Flask:
 
     # 日志加载配置
     logger.init_app(app)
+
+    # 终端命令管理类加载配置
+    command.init_app(app)
+
+    # 自动化蓝图类加载配置
+    blueprint.init_app(app)
 
     return app

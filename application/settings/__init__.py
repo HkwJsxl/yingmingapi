@@ -1,3 +1,5 @@
+from typing import List
+
 """公共配置"""
 
 """调试模式"""
@@ -31,3 +33,8 @@ LOG_FILE: str = "logs/app.log"
 LOG_LEVEL: str = "INFO"
 LOG_BACKPU_COUNT: int = 31
 LOG_FORMAT: str = '%(asctime)s - %(levelname)s - %(filename)s - %(funcName)s - %(lineno)s - %(message)s'
+
+"""蓝图列表"""
+INSTALL_BLUEPRINTS: List = [
+
+]

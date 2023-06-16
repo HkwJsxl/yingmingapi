@@ -1,3 +1,5 @@
+from typing import List
+
 """本地配置"""
 # 调试模式
 DEBUG: bool = True
@@ -27,3 +29,8 @@ LOG_FILE: str = "logs/yingming.log"
 LOG_LEVEL: str = "DEBUG"
 LOG_BACKPU_COUNT: int = 31
 LOG_FORMAT: str = '%(asctime)s - %(levelname)s - %(filename)s - %(funcName)s - %(lineno)s - %(message)s'
+
+"""蓝图列表"""
+INSTALL_BLUEPRINTS: List = [
+    "application.apps.home",
+]
