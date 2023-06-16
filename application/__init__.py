@@ -1,6 +1,7 @@
 from flask import Flask
 
 from flask_sqlalchemy import SQLAlchemy
+from flask_redis import FlaskRedis
 
 from application.utils.config import Config
 
@@ -8,6 +9,10 @@ from application.utils.config import Config
 config: Config = Config()
 # SQLAlchemy初始化
 db: SQLAlchemy = SQLAlchemy()
+
+# redis初始化
+redis_cache: FlaskRedis = FlaskRedis(config_prefix="REDIS")
+redis_check: FlaskRedis = FlaskRedis(config_prefix="CHECK")
 
 
 def init_app(config_path: str):
@@ -20,5 +25,9 @@ def init_app(config_path: str):
 
     # SQLAlchemy加载配置
     db.init_app(app)
+
+    # redis加载配置
+    redis_cache.init_app(app)
+    redis_check.init_app(app)
 
     return app
