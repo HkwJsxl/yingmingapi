@@ -21,3 +21,9 @@ CHECK_URL: str = "redis://:root123456@127.0.0.1:6379/1"
 
 """mongoDB配置"""
 MONGO_URI: str = "mongodb://yingming:yingming@127.0.0.1:27017/yingming"
+
+"""日志配置"""
+LOG_FILE: str = "logs/yingming.log"
+LOG_LEVEL: str = "DEBUG"
+LOG_BACKPU_COUNT: int = 31
+LOG_FORMAT: str = '%(asctime)s - %(levelname)s - %(filename)s - %(funcName)s - %(lineno)s - %(message)s'
