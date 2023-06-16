@@ -1,17 +1,24 @@
 from flask import Flask
 
+from flask_sqlalchemy import SQLAlchemy
+
 from application.utils.config import Config
 
 # 实例化配置加载类
 config: Config = Config()
+# SQLAlchemy初始化
+db: SQLAlchemy = SQLAlchemy()
 
 
-# 为了防止每次导入application都要实例化Flask对象（只有调用了init_app函数的才会实例化Flask对象）
-def init_app(config_path: str) -> Flask:
+def init_app(config_path: str):
     """用于创建app实例对象并完成初始化过程的工厂函数"""
-    # 实例化flask应用对象
     app: Flask = Flask(__name__)
+
     # 加载配置
-    config.init_app(app, config_path)
+    config.init_config(app, config_path)
+    # print("app.config---", app.config)
+
+    # SQLAlchemy加载配置
+    db.init_app(app)
 
     return app

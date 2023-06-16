@@ -6,9 +6,9 @@ class Config(object):
 
     def __init__(self, app: Flask = None, config_path: str = None):
         if app:
-            self.init_app(app, config_path)
+            self.init_config(app, config_path)
 
-    def init_app(self, app: Flask = None, path: str = None):
+    def init_config(self, app: Flask = None, path: str = None):
         """
         项目配置初始化函数
         :param app: 当前flask应用实例对象[python中的对象属于引用类型，所以函数内部改了app的数据，外界的app也会修改]
