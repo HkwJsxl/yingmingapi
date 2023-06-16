@@ -18,3 +18,6 @@ SQLALCHEMY_ECHO: bool = True
 REDIS_URL: str = "redis://:root123456@127.0.0.1:6379/0"
 # 验证相关缓存
 CHECK_URL: str = "redis://:root123456@127.0.0.1:6379/1"
+
+"""mongoDB配置"""
+MONGO_URI: str = "mongodb://yingming:yingming@127.0.0.1:27017/yingming"

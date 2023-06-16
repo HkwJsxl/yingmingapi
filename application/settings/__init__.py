@@ -21,3 +21,7 @@ SQLALCHEMY_ECHO: bool = False
 
 """redis数据库配置"""
 REDIS_URL: str = "redis://:root123456@127.0.0.1:6379/0"
+
+"""mongoDB配置"""
+# mongodb://[username:password@]host1[:port1][,...hostN[:portN]][/[defaultauthdb][?options]]
+MONGO_URI: str = "mongodb://:@127.0.0.1:27017/admin"
