@@ -1,6 +1,6 @@
 from application import Flask, init_app
 
-app: Flask = init_app()
+app: Flask = init_app("application.settings.dev")
 
 
 @app.route('/')
