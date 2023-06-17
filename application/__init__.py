@@ -36,6 +36,7 @@ def init_app(config_path: str) -> Flask:
     app: Flask = Flask(__name__)
 
     # 全局路径常量，指向项目根目录
+    # Path(__file__):当前文件位置，Path()程序开始位置
     app.BASE_DIR: Path = Path(__file__).resolve().parent.parent
 
     # 加载配置

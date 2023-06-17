@@ -83,8 +83,10 @@ class AutoBluePrint(object):
 def path(rule: str, name: Union[Callable, str], **kwargs) -> Dict:
     """绑定url地址和视图的映射关系"""
     if isinstance(name, Callable):
+        # 子路由
         return {"rule": rule, "view_func": name, **kwargs}
     elif isinstance(name, str):
+        # 总路由
         return {"url_prefix": rule, "blueprint_url_subffix": name, **kwargs}
     else:
         return {}
