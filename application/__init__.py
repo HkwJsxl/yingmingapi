@@ -61,4 +61,8 @@ def init_app(config_path: str) -> Flask:
     # 自动化蓝图类加载配置
     blueprint.init_app(app)
 
+    # db创建数据库表
+    with app.app_context():
+        db.create_all()
+
     return app

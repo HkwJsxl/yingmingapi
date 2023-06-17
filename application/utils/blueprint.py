@@ -74,9 +74,14 @@ class AutoBluePrint(object):
                     for url in urlpatterns:
                         blueprint.add_url_rule(**url)
                     break
+            try:
+                # 让蓝图自动发现模型模块
+                import_module(f"{blueprint_path}.models")
+            except ModuleNotFoundError:
+                pass
 
             # 最后把蓝图对象注册到app实例对象
-            # url_prefix 是地址前缀，将来我们将来实现一个总路由来声明它
+            # url_prefix 是地址前缀
             app.register_blueprint(blueprint, url_prefix=url_prefix)
 
 
