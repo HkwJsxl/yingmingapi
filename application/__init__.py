@@ -5,11 +5,12 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_redis import FlaskRedis
 from flask_pymongo import PyMongo
+from flask_jsonrpc import JSONRPC
 
 from application.utils.config import Config
 from application.utils.logger import Logger
 from application.utils.commands import Command
-from application.utils.blueprint import AutoBluePrint, path
+from application.utils.blueprint import AutoBluePrint, path, include
 
 """加载组件[单例模式]"""
 # 实例化配置加载类
@@ -29,6 +30,9 @@ logger: Logger = Logger()
 command: Command = Command()
 # 实例化自动化蓝图类
 blueprint: AutoBluePrint = AutoBluePrint()
+
+# jsonrpc实例化
+jsonrpc = JSONRPC()
 
 
 def init_app(config_path: str) -> Flask:
@@ -58,11 +62,18 @@ def init_app(config_path: str) -> Flask:
     # 终端命令管理类加载配置
     command.init_app(app)
 
+    # jsonrpc注册到项目中
+    # 开启rpc接口的web调试界面：/api/browse
+    jsonrpc.browse_url = app.config.get("API_BROWSE_URL", "/api/browse/")
+    jsonrpc.enable_web_browsable_api = app.config.get("DEBUG", False)
+    # 同jsonrpc = JSONRPC(enable_web_browsable_api=True)
+    jsonrpc.init_app(app)
+
     # 自动化蓝图类加载配置
     blueprint.init_app(app)
 
     # db创建数据库表
-    with app.app_context():
-        db.create_all()
+    # with app.app_context():
+    #     db.create_all()
 
     return app

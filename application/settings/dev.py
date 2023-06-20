@@ -30,7 +30,14 @@ LOG_LEVEL: str = "DEBUG"
 LOG_BACKPU_COUNT: int = 31
 LOG_FORMAT: str = '%(asctime)s - %(levelname)s - %(filename)s - %(funcName)s - %(lineno)s - %(message)s'
 
+"""总路由"""
+URL_ROOT_PATH = "application.urls"
+
 """蓝图列表"""
 INSTALL_BLUEPRINTS: List = [
     "application.apps.home",
 ]
+
+"""JSONRPC"""
+# api接口web调试界面的url地址
+API_BROWSE_URL = "/api/browse"

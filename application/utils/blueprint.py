@@ -95,3 +95,15 @@ def path(rule: str, name: Union[Callable, str], **kwargs) -> Dict:
         return {"url_prefix": rule, "blueprint_url_subffix": name, **kwargs}
     else:
         return {}
+
+
+def include(url_prefix: str, blueprint_url_subffix: str) -> Dict:
+    """
+    绑定路由前缀和蓝图的映射关系
+    :param url_prefix: 路由前缀
+    :param blueprint_url_subffix: 蓝图名称，
+           格式：蓝图包名.路由模块名
+           例如：蓝图目录是home, 路由模块名是urls，则参数：home.urls
+    :return: Dict
+    """
+    return {"url_prefix": url_prefix, "blueprint_url_subffix": blueprint_url_subffix}
