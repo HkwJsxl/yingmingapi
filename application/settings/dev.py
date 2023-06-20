@@ -36,6 +36,7 @@ URL_ROOT_PATH = "application.urls"
 """蓝图列表"""
 INSTALL_BLUEPRINTS: List = [
     "application.apps.home",
+    "application.apps.users",
 ]
 
 """JSONRPC"""
