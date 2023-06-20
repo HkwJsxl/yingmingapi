@@ -70,7 +70,7 @@ def init_app(config_path: str) -> Flask:
     jsonrpc.init_app(app)
 
     # 自动化蓝图类加载配置
-    blueprint.init_app(app)
+    blueprint.init_app(app, jsonrpc)
 
     # db创建数据库表
     # with app.app_context():
