@@ -73,7 +73,7 @@ def init_app(config_path: str) -> Flask:
     blueprint.init_app(app, jsonrpc)
 
     # db创建数据库表
-    # with app.app_context():
-    #     db.create_all()
+    with app.app_context():
+        db.create_all()
 
     return app
