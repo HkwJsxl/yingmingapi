@@ -11,6 +11,7 @@ from application.utils.config import Config
 from application.utils.logger import Logger
 from application.utils.commands import Command
 from application.utils.blueprint import AutoBluePrint, path, include
+from application.utils import message, code
 
 """加载组件[单例模式]"""
 # 实例化配置加载类
