@@ -3,5 +3,6 @@ from application import path
 from . import api
 
 apipatterns: List = [
-    path("mobile", api.check_mobile)
+    path("mobile", api.check_mobile),
+    path("register", api.register),
 ]
