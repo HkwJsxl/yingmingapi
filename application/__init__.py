@@ -6,6 +6,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_redis import FlaskRedis
 from flask_pymongo import PyMongo
 from flask_jsonrpc import JSONRPC
+from flask_cors import CORS
 
 from application.utils.config import Config
 from application.utils.logger import Logger
@@ -39,6 +40,9 @@ jsonrpc = JSONRPC()
 def init_app(config_path: str) -> Flask:
     """用于创建app实例对象并完成初始化过程的工厂函数"""
     app: Flask = Flask(__name__)
+
+    # 解决跨域
+    CORS(app, resources=r'/*', supports_credentials=True)
 
     # 全局路径常量，指向项目根目录
     # Path(__file__):当前文件位置，Path()程序开始位置
@@ -74,7 +78,7 @@ def init_app(config_path: str) -> Flask:
     blueprint.init_app(app, jsonrpc)
 
     # db创建数据库表
-    with app.app_context():
-        db.create_all()
+    # with app.app_context():
+    #     db.create_all()
 
     return app

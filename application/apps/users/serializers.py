@@ -66,7 +66,7 @@ class UserSchema(SQLAlchemyAutoSchema):
     @decorators.post_load
     def save_object(self, data, **kwargs) -> User:
         data["name"] = data["mobile"]
-        print("request.environ---", request.environ)
+        # print("request.environ---", request.environ)
         data["ip_address"] = request.environ["REMOTE_ADDR"]  # 客户端本次请求的IP地址
         user: User = User(**data)
         self.session.add(user)

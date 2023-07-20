@@ -42,5 +42,7 @@ def register(mobile: str, password: str, re_password: str, sms_code: str) -> Dic
         result: Dict[str, Any] = {"error": code.CODE_OK, "errmsg": us.dump(user)}
     except serializers.ValidationError as e:
         result: Dict[str, Any] = {"error": code.CODE_VALIDATE_ERROR, "errmsg": e.messages}
-
+    result.headers['Access-Control-Allow-Origin'] = '*'
+    result.headers['Access-Control-Allow-Method'] = 'POST'  # 如果该请求是get，把POST换成GET即可
+    result.headers['Access-Control-Allow-Headers'] = 'x-requested-with,content-type'
     return result
